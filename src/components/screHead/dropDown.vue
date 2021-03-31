@@ -12,11 +12,12 @@
 <script>
 import { reactive, getCurrentInstance, ref, onMounted } from "vue";
 export default {
+  emits:['update:downVal'],
   props: {
     downItem: {
       type: Object,
       default: () => {}
-    }
+    },
   },
   setup(props) {
     const downConfig = reactive({
@@ -31,11 +32,10 @@ export default {
         for(let key in datas ){
                downConfig[key]=datas[key]
         }
-        console.log(datas);
       }
     };
     const change = val => {
-      //   proxy.$emit("update:downValue", val);
+    proxy.$emit("update:downVal", val);
       console.log(val);
     };
     onMounted(() => {
@@ -46,7 +46,5 @@ export default {
 };
 </script>
 <style lang="scss" >
-.el-select-dropdown__list {
-  background-color: #fff;
-}
+
 </style>
