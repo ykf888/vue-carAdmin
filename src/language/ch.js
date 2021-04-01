@@ -5,8 +5,8 @@ module.exports={
     aside:{
         home:"首页",
         managementALl:"停车场",
-        role:"列表管理",
-        userList:"新增停车场",
+        parkingLot:"列表管理",
+        addPick:"新增停车场",
         menuMangent:"菜单管理",
         infoMangent:"信息管理",
         infoList:"信息列表",

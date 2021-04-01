@@ -51,12 +51,13 @@
 </template>
 <script>
 import vueTable from "@c/vueTable";
-import { reactive, getCurrentInstance } from "vue";
+import { reactive, getCurrentInstance, onMounted } from "vue";
 import FromHead from "@c/screHead/dropDown";
 import InputVue from "@c/screHead/inputVue";
+import { cityPicker } from "@/api/getlist";
 export default {
   components: { vueTable, FromHead, InputVue },
-  name: "role",
+  name: "parkingLot",
   setup(props) {
     const { proxy } = getCurrentInstance();
     const downItem = reactive({
@@ -71,22 +72,27 @@ export default {
         props: { expandTrigger: "hover" },
         options: [
           {
-            value: 'shejiyuanze',
-            label: '设计原则',
-            children: [{
-              value: 'yizhi',
-              label: '一致',
-            }, {
-              value: 'fankui',
-              label: '反馈'
-            }, {
-              value: 'xiaolv',
-              label: '效率'
-            }, {
-              value: 'kekong',
-              label: '可控'
-            }]
-          },
+            value: "shejiyuanze",
+            label: "设计原则",
+            children: [
+              {
+                value: "yizhi",
+                label: "一致"
+              },
+              {
+                value: "fankui",
+                label: "反馈"
+              },
+              {
+                value: "xiaolv",
+                label: "效率"
+              },
+              {
+                value: "kekong",
+                label: "可控"
+              }
+            ]
+          }
         ]
       },
       type: {
@@ -168,14 +174,19 @@ export default {
     const onSubmit = formName => {
       console.log(downItem.fromVal);
     };
-    const handleChange=(value)=> {
-        console.log(value);
-      }
+    const handleChange = value => {
+      console.log(value);
+    };
+    onMounted(() => {
+     
+  
+    });
     return {
       tableCofige,
       downItem,
       downValue,
-      onSubmit,handleChange
+      onSubmit,
+      handleChange
     };
   }
 };

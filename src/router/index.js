@@ -69,27 +69,27 @@ const routes = [
     path: "/managementALl",
     name: "managementALl",
     component:layout,
-    redirect:"Role",
+    redirect:"parkingLot",
     meta:{
       icon:"icon-icon-test30",
       name:t("aside.managementALl"),
     },
     children:[
       {
-        path: "/role",
+        path: "/parkingLot",
         name: "Role",
         meta:{
-          name:t("aside.role"),
+          name:t("aside.parkingLot"),
         },
-        component: () =>import( "../views/managementALl/role"),
+        component: () =>import( "../views/managementALl/parkingLot"),
       },
       {
-        path: "/userList",
-        name: "UserList",
+        path: "/addPick",
+        name: "addPick",
         meta:{
-          name:t("aside.userList"),
+          name:t("aside.addPick"),
         },
-        component: () =>import( "../views/managementALl/userList"),
+        component: () =>import( "../views/managementALl/addPick"),
 
       },
       // {

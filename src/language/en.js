@@ -5,7 +5,7 @@ module.exports={
     aside:{
         home:"home",
         managementALl:"Management desk",
-        role:"Role management",
+        parkingLot:"Role management",
         userList:"List of users",
         menuMangent:"Menu management",
         infoMangent:"Information management",
