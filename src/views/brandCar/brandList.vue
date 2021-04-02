@@ -5,7 +5,7 @@
     class="demo-form-inline"
     ref="headFrom"
   >
-    <el-form-item label="区域">
+    <el-form-item label="车辆品牌">
       <el-cascader
         placeholder="区域"
         v-model="downItem.areaDate.value"
@@ -13,31 +13,18 @@
         @change="handleChange"
       ></el-cascader>
     </el-form-item>
-    <el-form-item label="类型">
-      <FromHead
-        :downItem="downItem.type"
-        v-model:downVal="downItem.fromVal.type"
-      />
-    </el-form-item>
-    <el-form-item label="关键字">
-      <FromHead
-        :downItem="downItem.keyword"
-        v-model:downVal="downItem.fromVal.keyword"
-      />
-    </el-form-item>
-    <el-form-item label="">
+    <el-form-item label="品牌型号">
       <InputVue placeholder="" v-model:inputDat="downItem.fromVal.input" />
-    </el-form-item>
-    <el-form-item label="禁启用">
-      <FromHead
-        :downItem="downItem.open"
-        v-model:downVal="downItem.fromVal.open"
-      />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit('headFrom')">查询</el-button>
     </el-form-item>
   </el-form>
+  <div class="addBtn">
+    <el-button type="primary" @click="dialogItem.dialogVisible = true"
+      >新增</el-button
+    >
+  </div>
   <vueTable :tableCofige="tableCofige">
     <template v-slot:swith="data">
       <el-switch
@@ -52,6 +39,22 @@
       <el-button type="text">删除</el-button>
     </template>
   </vueTable>
+  <el-dialog
+    title="提示"
+    v-model="dialogItem.dialogVisible"
+    width="30%"
+    :before-close="handleClose"
+  >
+    <span>这是一段信息</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogItem.dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogItem.dialogVisible = false"
+          >确 定</el-button
+        >
+      </span>
+    </template>
+  </el-dialog>
 </template>
 <script>
 import vueTable from "@c/vueTable";
@@ -64,6 +67,9 @@ export default {
   name: "parkingLot",
   setup(props) {
     const { proxy } = getCurrentInstance();
+    const dialogItem = reactive({
+      dialogVisible: false
+    });
     const downItem = reactive({
       fromVal: {
         type: "",
@@ -125,20 +131,6 @@ export default {
             value: "area"
           }
         ]
-      },
-      open: {
-        placeholder: "开启状态",
-        val: "",
-        option: [
-          {
-            label: "启用",
-            value: "open"
-          },
-          {
-            label: "禁用",
-            value: "disable"
-          }
-        ]
       }
     });
     const downValue = reactive({
@@ -151,23 +143,15 @@ export default {
       tabHead: [
         {
           prop: "date",
-          label: "停车场名称"
+          label: "logo"
         },
         {
           prop: "name",
-          label: "类型"
+          label: "车辆品牌"
         },
         {
           prop: "area",
-          label: "区域"
-        },
-        {
-          prop: "Parkable",
-          label: "可停放车辆"
-        },
-        {
-          prop: "location",
-          label: "查看位置"
+          label: "品牌型号"
         },
         {
           prop: "switch",
@@ -195,13 +179,19 @@ export default {
     const handleChange = value => {
       console.log(value);
     };
+    const handleClose = (done) => {
+     done();
+       
+    };
     onMounted(() => {});
     return {
       tableCofige,
       downItem,
       downValue,
       onSubmit,
-      handleChange
+      handleClose,
+      handleChange,
+      dialogItem
     };
   }
 };

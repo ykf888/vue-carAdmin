@@ -4,34 +4,37 @@ const requestUrl ={
     getTableDate:"ceshiceshi"
 }
 
-// 获取验证码
+// 获取表格数据
 export  function getList(prome){
     let data ={
         tableData: [
             {
-              date: "2016-05-02",
+              date: "南山停车场",
               name: "王小虎",
-              address: "上海市普陀区金沙江路 1518 弄",
-              switch: false
+              area:"室外",
+              Parkable:"20",
+              location:"广东省 深圳市 南山区",
+              switch: false,
+              set:"",
             },
             {
-              date: "2016-05-04",
+              date: "南山停车场",
               name: "王小虎",
-              address: "上海市普陀区金沙江路 1517 弄",
-              switch: true
+              area:"室外",
+              Parkable:"20",
+              location:"广东省 深圳市 南山区",
+              switch: false,
+              set:"",
             },
             {
-              date: "2016-05-01",
+              date: "南山停车场",
               name: "王小虎",
-              address: "上海市普陀区金沙江路 1519 弄",
-              switch: false
+              area:"室外",
+              Parkable:"20",
+              location:"广东省 深圳市 南山区",
+              switch: false,
+              set:"",
             },
-            {
-              date: "2016-05-03",
-              name: "王小虎",
-              address: "上海市普陀区金沙江路 1516 弄",
-              switch: false
-            }
           ],
     }
     return Promise.resolve(data)

@@ -5,7 +5,7 @@
     class="demo-form-inline"
     ref="headFrom"
   >
-    <el-form-item label="区域">
+    <el-form-item label="车辆品牌">
       <el-cascader
         placeholder="区域"
         v-model="downItem.areaDate.value"
@@ -13,27 +13,19 @@
         @change="handleChange"
       ></el-cascader>
     </el-form-item>
-    <el-form-item label="类型">
+    <el-form-item label="车牌号">
+      <InputVue placeholder="" v-model:inputDat="downItem.fromVal.input" />
+    </el-form-item>
+    <el-form-item label="关键字">
       <FromHead
         :downItem="downItem.type"
         v-model:downVal="downItem.fromVal.type"
       />
     </el-form-item>
-    <el-form-item label="关键字">
-      <FromHead
-        :downItem="downItem.keyword"
-        v-model:downVal="downItem.fromVal.keyword"
-      />
-    </el-form-item>
     <el-form-item label="">
       <InputVue placeholder="" v-model:inputDat="downItem.fromVal.input" />
     </el-form-item>
-    <el-form-item label="禁启用">
-      <FromHead
-        :downItem="downItem.open"
-        v-model:downVal="downItem.fromVal.open"
-      />
-    </el-form-item>
+
     <el-form-item>
       <el-button type="primary" @click="onSubmit('headFrom')">查询</el-button>
     </el-form-item>
@@ -125,20 +117,6 @@ export default {
             value: "area"
           }
         ]
-      },
-      open: {
-        placeholder: "开启状态",
-        val: "",
-        option: [
-          {
-            label: "启用",
-            value: "open"
-          },
-          {
-            label: "禁用",
-            value: "disable"
-          }
-        ]
       }
     });
     const downValue = reactive({
@@ -151,7 +129,7 @@ export default {
       tabHead: [
         {
           prop: "date",
-          label: "停车场名称"
+          label: "车牌号"
         },
         {
           prop: "name",
@@ -159,21 +137,25 @@ export default {
         },
         {
           prop: "area",
-          label: "区域"
-        },
-        {
-          prop: "Parkable",
-          label: "可停放车辆"
-        },
-        {
-          prop: "location",
-          label: "查看位置"
+          label: "能源类型"
         },
         {
           prop: "switch",
           label: "状态(禁/启用)",
           slot: "slot",
           slotName: "swith"
+        },
+        {
+          prop: "Parkable",
+          label: "停车场"
+        },
+        {
+          prop: "location",
+          label: "发动机型号"
+        },
+        {
+          prop: "type",
+          label: "状态"
         },
         {
           prop: "set",

@@ -92,95 +92,72 @@ const routes = [
         component: () =>import( "../views/managementALl/addPick"),
 
       },
-      // {
-      //   path: "/menuMangent",
-      //   name: "MenuMangent",
-      //   meta:{
-      //     name:t("aside.menuMangent"),
-      //   },
-      //   component: () =>import( "../views/managementALl/menuMangent"),
-      // },
     ]
   },
-  // {
-  //   path: "/infoMangent",
-  //   name: "InfoMangent",
-  //   component:layout,
-  //   meta:{
-  //     icon:"icon-icon-test9",
-  //     name:t("aside.infoMangent"),
-  //   },
-  //   redirect:"infoList",
-  //   children:[
-  //     {
-  //       path: "/infoList",
-  //       name: "InfoList",
-  //       meta:{
-  //         name:t("aside.infoList"),
-  //       },
-  //       component: () =>import( "../views/infoMangent/infoList"),
-  //     },
-  //     {
-  //       path: "/infoCategory",
-  //       name: "InfoCategory",
-  //       meta:{
-  //         name:t("aside.infoCategory"),
-  //       },
-  //       component: () =>import( "../views/infoMangent/infoCategory"),
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: "/productMangent",
-  //   name: "ProductMangent",
-  //   component:layout,
-  //   meta:{
-  //     name:t("aside.productMangent"),
-  //     icon:"icon-icon-test7",
-  //   },
-  //   redirect:"productList",
-  //   children:[
-  //     {
-  //       path: "/productList",
-  //       name: "ProductList",
-  //       meta:{
-  //         name:t("aside.productList"),
-  //       },
-  //       component: () =>import( "../views/productMangent/productList"),
-  //     },
-  //     {
-  //       path: "/productCtegory",
-  //       name: "ProductCtegory",
-  //       meta:{
-  //         name:t("aside.productCtegory"),
-  //       },
-  //       component: () =>import( "../views/productMangent/productCtegory"),
-        
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: "/vipMangent",
-  //   name: "VipMangent",
-  //   redirect:"vipMangent",
-  //   component:layout,
-  //   meta:{
-  //     icon:"icon-icon-test35",
-  //     name:t("aside.vipMangent")
-  //   },
-  //   children:[
-  //     {
-  //       path: "/vipMangent",
-  //       name: "VipMangent",
-  //       component: () =>import( "../views/vipMangent"),
-  //       meta:{
-  //         name:t("aside.vipMangent")
-  //       },
-  //     }
-  //   ]
-  // }
-
-  
+  {
+    path: "/carManage",
+    name: "carManage",
+    component:layout,
+    redirect:"carList",
+    meta:{
+      icon:"icon-icon-test30",
+      name:"车辆管理",
+    },
+    children:[
+      {
+        path: "/carList",
+        name: "carList",
+        meta:{
+          name:"车辆列表",
+        },
+        component: () =>import( "../views/carManage/carList"),
+      },
+      {
+        path: "/addCar",
+        name: "addCar",
+        meta:{
+          name:"新增车辆",
+        },
+        component: () =>import( "../views/carManage/addCar"),
+      },
+      {
+        path: "/carAttribute",
+        name: "carAttribute",
+        meta:{
+          name:"车辆属性",
+        },
+        component: () =>import( "../views/carManage/carAttribute"),
+      },
+    ]
+  },
+  {
+    path: "/brandCar",
+    name: "brandCar",
+    component:layout,
+    redirect:"brandList",
+    meta:{
+      icon:"icon-icon-test30",
+      name:"车辆品牌",
+    },
+    children:[
+      {
+        path: "/brandList",
+        name: "brandList",
+        meta:{
+          name:"品牌列表",
+        },
+        component: () =>import( "../views/brandCar/brandList"),
+      },
+      {
+        path: "/brandAdd",
+        name: "brandAdd",
+        meta:{
+          name:"新增品牌",
+        },
+        component: () =>import( "../views/brandCar/brandAdd"),
+      },
+    ]
+  }
 ];
 
 const router = createRouter({
