@@ -1,5 +1,5 @@
 <template>
-    <div>{{ $t('chlang.name') }}
+    <div>
 
 
       

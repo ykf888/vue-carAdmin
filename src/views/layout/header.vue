@@ -15,10 +15,7 @@
             <span class="usericon iconfont icon-yonghu"></span>
             <span>{{username}}</span>
           </el-dropdown-item>
-          <el-dropdown-item>
-            <span class="usericon iconfont icon-icon-test2"></span>
-            <el-button type="text" v-for="item in data.lang" :key="item.value" @click="changelang(item.value)">{{item.lang}}</el-button>
-          </el-dropdown-item>
+        
           <el-dropdown-item @click="exitOut">
             <span class="usericon iconfont icon-dianyuan"></span>
             <span>退出</span> 
@@ -31,39 +28,25 @@
 <script>
 import { reactive, ref, toRefs, computed } from "vue";
 import { useStore } from "vuex";
-import {useI18n} from "vue-i18n"
 import { useRouter } from "vue-router";
 export default {
   setup(props,{root}) {
     const router = useRouter();
-    const {locale} = useI18n()
     const store = useStore();
     // const isCollapse = computed(() => store.getters["header/isCollapse"]);
     const isCollapse = computed(() => store.state.header.isCollapse);
     const username =computed(()=>store.state.login.username)
     const data =reactive({
-      lang:[
-        {
-        lang:"中文",
-        value:"ch"
-        },
-        {
-        lang:"英文",
-        value:"en"
-        },
-      ]
+     
     })
-
-
-
     const changeMore = () => {
       store.commit("header/SET_COLLAPSE");
     };
     const changelang =(val)=>{
-      localStorage.setItem("lang",val)
-      let lang =localStorage.getItem("lang")
-      locale.value=val
-      router.go(0); 
+      // localStorage.setItem("lang",val)
+      // let lang =localStorage.getItem("lang")
+      // locale.value=val
+      // router.go(0); 
     }
     const exitOut=()=>{
       store.dispatch("login/exit").then(()=>{

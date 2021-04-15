@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import login from "../views/acount/login";
 import layout from "../views/layout"
-import i18n from "@/language/index.js"
+// import i18n from "@/language/index.js"
 import{remove_token,remove_tusername,get_token}from"@/kit/cookieData"
 import "./premin"
-const t =(val)=>{
-  return i18n.global.t(val)
-}
+// const t =(val)=>{
+//   return i18n.global.t(val)
+// }
 const routes = [
   {
     path: "/",
@@ -51,7 +51,7 @@ const routes = [
     redirect:"home",
     component:layout,
     meta:{
-      name:t("aside.home"),
+      name:'首页',
       icon:"icon-yibiaopan"
     },
     children:[
@@ -59,7 +59,7 @@ const routes = [
         path: "/home",
         name: "home",
         meta:{
-          name:t("aside.home"),
+          name:'首页',
         },
         component: () =>import( "../views/home")
       }
@@ -72,14 +72,14 @@ const routes = [
     redirect:"parkingLot",
     meta:{
       icon:"icon-icon-test30",
-      name:t("aside.managementALl"),
+      name:'停车场',
     },
     children:[
       {
         path: "/parkingLot",
         name: "Role",
         meta:{
-          name:t("aside.parkingLot"),
+          name:'列表管理',
         },
         component: () =>import( "../views/managementALl/parkingLot"),
       },
@@ -87,7 +87,7 @@ const routes = [
         path: "/addPick",
         name: "addPick",
         meta:{
-          name:t("aside.addPick"),
+          name:'新增停车场',
         },
         component: () =>import( "../views/managementALl/addPick"),
 

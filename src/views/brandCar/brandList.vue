@@ -39,31 +39,17 @@
       <el-button type="text">删除</el-button>
     </template>
   </vueTable>
-  <el-dialog
-    title="提示"
-    v-model="dialogItem.dialogVisible"
-    width="30%"
-    :before-close="handleClose"
-  >
-    <span>这是一段信息</span>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="dialogItem.dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogItem.dialogVisible = false"
-          >确 定</el-button
-        >
-      </span>
-    </template>
-  </el-dialog>
+ <Brandadd v-model:dialogVisible="dialogItem.dialogVisible"/>
 </template>
 <script>
 import vueTable from "@c/vueTable";
 import { reactive, getCurrentInstance, onMounted } from "vue";
 import FromHead from "@c/screHead/dropDown";
 import InputVue from "@c/screHead/inputVue";
+import Brandadd from "./brandAdd";
 import { cityPicker } from "@/api/getlist";
 export default {
-  components: { vueTable, FromHead, InputVue },
+  components: { vueTable, FromHead, InputVue,Brandadd },
   name: "parkingLot",
   setup(props) {
     const { proxy } = getCurrentInstance();
@@ -172,16 +158,11 @@ export default {
       },
       selection: true
     });
-
     const onSubmit = formName => {
       console.log(downItem.fromVal);
     };
     const handleChange = value => {
       console.log(value);
-    };
-    const handleClose = (done) => {
-     done();
-       
     };
     onMounted(() => {});
     return {
@@ -189,12 +170,28 @@ export default {
       downItem,
       downValue,
       onSubmit,
-      handleClose,
       handleChange,
-      dialogItem
+      dialogItem,
     };
   }
 };
 </script>
 <style scoped lang="scss">
+.logoBox{
+  display: flex;
+  .otherBox{
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+      li{
+        width: 60px;
+        height: 60px;
+        margin-left: 4px;
+        img{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
 </style>

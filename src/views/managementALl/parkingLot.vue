@@ -38,6 +38,7 @@
       <el-button type="primary" @click="onSubmit('headFrom')">查询</el-button>
     </el-form-item>
   </el-form>
+  <div class="addBtn"><el-button type="primary">新增</el-button></div>
   <vueTable :tableCofige="tableCofige">
     <template v-slot:swith="data">
       <el-switch
