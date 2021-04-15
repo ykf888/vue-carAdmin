@@ -34,6 +34,10 @@
       >
       </el-switch>
     </template>
+  
+    <template v-slot:slotLogo="data">
+      <img :src="data.data.logo" alt="" class="tabLogo">
+    </template>
     <template v-slot:operation="">
       <el-button type="text">编辑</el-button>
       <el-button type="text">删除</el-button>
@@ -128,8 +132,10 @@ export default {
       },
       tabHead: [
         {
-          prop: "date",
-          label: "logo"
+          prop: "logo",
+          label: "logo",
+          slot: "slot",
+          slotName: "slotLogo"
         },
         {
           prop: "name",
@@ -177,21 +183,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.logoBox{
-  display: flex;
-  .otherBox{
-    ul{
-      display: flex;
-      flex-wrap: wrap;
-      li{
-        width: 60px;
-        height: 60px;
-        margin-left: 4px;
-        img{
-          width: 100%;
-        }
-      }
-    }
-  }
+.tabLogo{
+  width: 40px;
 }
 </style>

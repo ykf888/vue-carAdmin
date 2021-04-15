@@ -50,7 +50,6 @@ import vueTable from "@c/vueTable";
 import { reactive, getCurrentInstance, onMounted } from "vue";
 import FromHead from "@c/screHead/dropDown";
 import InputVue from "@c/screHead/inputVue";
-import { cityPicker } from "@/api/getlist";
 export default {
   components: { vueTable, FromHead, InputVue },
   name: "parkingLot",
