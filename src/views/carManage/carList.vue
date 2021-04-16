@@ -1,14 +1,14 @@
 <template>
   <el-form
     :inline="true"
-    :model="tableCofige.fromHead"
+    :model="downItem.fromVal"
     class="demo-form-inline"
     ref="headFrom"
   >
     <el-form-item label="车辆品牌">
       <el-cascader
         placeholder="区域"
-        v-model="downItem.areaDate.value"
+        v-model="downItem.fromVal.options"
         :options="downItem.areaDate.options"
         @change="handleChange"
       ></el-cascader>
@@ -23,7 +23,7 @@
       />
     </el-form-item>
     <el-form-item label="">
-      <InputVue placeholder="" v-model:inputDat="downItem.fromVal.input" />
+      <InputVue placeholder="" v-model:inputDat="downItem.fromVal.keyword" />
     </el-form-item>
 
     <el-form-item>
@@ -60,7 +60,7 @@ export default {
         type: "",
         keyword: "",
         input: "",
-        open: ""
+        options:""
       },
       areaDate: {
         value: "",
@@ -122,9 +122,7 @@ export default {
       type: ""
     });
     const tableCofige = reactive({
-      fromHead: {
-        area: ""
-      },
+
       tabHead: [
         {
           prop: "date",

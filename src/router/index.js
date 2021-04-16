@@ -79,18 +79,9 @@ const routes = [
         path: "/parkingLot",
         name: "Role",
         meta:{
-          name:'列表管理',
+          name:'停车场',
         },
         component: () =>import( "../views/managementALl/parkingLot"),
-      },
-      {
-        path: "/addPick",
-        name: "addPick",
-        meta:{
-          name:'新增停车场',
-        },
-        component: () =>import( "../views/managementALl/addPick"),
-
       },
     ]
   },
@@ -144,18 +135,47 @@ const routes = [
         path: "/brandList",
         name: "brandList",
         meta:{
-          name:"品牌列表",
+          name:"车辆品牌",
         },
         component: () =>import( "../views/brandCar/brandList"),
       },
+
+    ]
+  },
+  {
+    path: "/user",
+    name: "user",
+    component:layout,
+    redirect:"userList",
+    meta:{
+      icon:"icon-icon-test30",
+      name:"用户管理",
+    },
+    children:[
       {
-        path: "/brandAdd",
-        name: "brandAdd",
+        path: "/userList",
+        name: "userList",
         meta:{
-          name:"新增品牌",
+          name:"用户列表",
         },
-        component: () =>import( "../views/brandCar/brandAdd"),
+        component: () =>import( "../views/user/userList"),
+      },{
+        path: "/userEditor",
+        name: "userEditor",
+        meta:{
+          name:"用户编辑",
+        },
+        component: () =>import( "../views/user/userEditor"),
       },
+      {
+        path: "/userDetails",
+        name: "userDetails",
+        meta:{
+          name:"用户详情",
+        },
+        component: () =>import( "../views/user/userDetails"),
+      },
+
     ]
   }
 ];

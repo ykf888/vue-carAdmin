@@ -1,5 +1,4 @@
 <template>
-
   <el-table :data="data.tableData" style="width: 100%">
     <el-table-column
       v-if="data.tableCofige.selection"
@@ -14,7 +13,6 @@
         <template #default="scope">
            <slot :name="item.slotName" :data="scope.row"></slot>
         </template>
-          
       </el-table-column>
       <el-table-column v-if="item.slot!=='slot'" :prop="item.prop" :label="item.label">
       </el-table-column>
@@ -46,14 +44,14 @@ export default {
       let request=data.tableCofige.requestDate
       let requestDate={
         method:request.method,
-        url:requestUrl[request.taburl],
+        url:data.tableCofige.requestDate.taburl,
         data:{}
       }
       getList(requestDate).then(request=>{
         data.tableData=request.tableData
       }).catch(error=>{
       })
-    } 
+    }
     const getTableCofige=()=>{
       let tableCofige=props.tableCofige
       let keys =Object.keys(data.tableCofige)

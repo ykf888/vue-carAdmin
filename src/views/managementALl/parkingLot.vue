@@ -38,7 +38,7 @@
       <el-button type="primary" @click="onSubmit('headFrom')">查询</el-button>
     </el-form-item>
   </el-form>
-  <div class="addBtn"><el-button type="primary">新增</el-button></div>
+  <div class="addBtn"><el-button type="primary" @click="data.addDialog=true">新增</el-button></div>
   <vueTable :tableCofige="tableCofige">
     <template v-slot:swith="data">
       <el-switch
@@ -53,15 +53,17 @@
       <el-button type="text">删除</el-button>
     </template>
   </vueTable>
+  <AddPick  v-model:addDialog="data.addDialog"/>
 </template>
 <script>
 import vueTable from "@c/vueTable";
 import { reactive, getCurrentInstance, onMounted } from "vue";
 import FromHead from "@c/screHead/dropDown";
 import InputVue from "@c/screHead/inputVue";
+import AddPick from "./addPick";
 import { cityPicker } from "@/api/getlist";
 export default {
-  components: { vueTable, FromHead, InputVue },
+  components: { vueTable, FromHead, InputVue ,AddPick},
   name: "parkingLot",
   setup(props) {
     const { proxy } = getCurrentInstance();
@@ -145,6 +147,9 @@ export default {
     const downValue = reactive({
       type: ""
     });
+    const data = reactive({
+      addDialog: false
+    });
     const tableCofige = reactive({
       fromHead: {
         area: ""
@@ -199,6 +204,7 @@ export default {
     onMounted(() => {});
     return {
       tableCofige,
+      data,
       downItem,
       downValue,
       onSubmit,
